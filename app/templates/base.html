@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %} {% endblock %} - Bem vindo!</title>
+    <link rel="stylesheet" href="/css/index.css">
+    <link rel="stylesheet" href="/css/box-alert.css">
+    <script src="/js/jquery-3.6.0.min.js"></script>
+    {% block headers %} {% endblock %}
+</head>
+<body>
+    <div id="box-alert">
+        <img id="box-alarm-icon-success" src="/images/success.png" />
+        <img id="box-alarm-icon-error" src="/images/error.png" />
+        <img id="box-alarm-icon-question" src="/images/question.png" />
+        <img id="box-alarm-icon-info" src="/images/info.png" />
+        <img id="box-alarm-icon-warning" src="/images/warning.png" />
+        <h1 id="box-alert-title">Carregando, aguarde...</h1>
+        <h3 id="box-alert-text">Estamos carregando o conteúdo da página...</h3>
+        <img id="box-alert-loading" src="/images/loading.svg" />
+        <div id="box-alert-buttons" align="center">
+            <button id="box-alert-confirm">Confirmar</button>
+        </div>
+    </div>
+    <script src="/js/box-alert.js"></script>
+
+    {% block content %} {% endblock %}
+    {% block scripts %} {% endblock %}
+</body>
+</html>

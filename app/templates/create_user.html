@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+
+{% block title %} Olá {% endblock %}
+
+
+{% block content %}
+    <h1>Crie o seu usuário:</h1>
+    <div id="cedentials">
+        <input placeholder="e-mail" type="email" id="email" name="email"> <br />
+        <input placeholder="Senha" type="password" id="passwd" name="passwd"> <br />
+        <input placeholder="Repita a senha" id="re-passwd" type="password"> <br />
+        <button id="submit">Criar</button>
+    </div>
+{% endblock %}
+
+{% block scripts %}
+    <script>
+        $(document).ready(() => {
+
+            $('#submit').click(() => {
+                email = $('#email');
+                passwd = $('#passwd');
+                re_passwd = $('#re-passwd');
+
+                if (passwd.val() === re_passwd.val()) {
+                    boxAlert.callAlert({
+                        title: 'Criando usuário...',
+                        text: 'Aguarde...',
+                        showLoading: true,
+                        onOpen: () => {
+                            $.ajax({
+                                url: '/users',
+                                type: 'post',
+                                data: {
+                                    email: email.val(),
+                                    passwd: passwd.val(),
+                                    re_passwd: re_passwd.val()
+                                },
+                                success: (result) => {
+                                    boxAlert.callAlert({
+                                        title: 'Sucesso',
+                                        text: result.message,
+                                        showConfirm: true,
+                                        icon: 'warning',
+                                        onConfirm: () => {
+                                            boxAlert.ignoreAlert();
+                                        }
+                                    });
+                                }
+                            })
+                        }
+                    });
+                } else boxAlert.callAlert({
+                    title: 'Oops',
+                    text: 'Senhas não conferem!',
+                    icon: 'error',
+                    showConfirm: true,
+                    onConfirm: () => {
+                        boxAlert.ignoreAlert();
+                    }
+                });
+            });
+        });
+    </script>
+{% endblock %}

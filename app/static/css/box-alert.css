@@ -1,0 +1,28 @@
+#box-alert {
+    margin-left: 25%;
+    margin-top: 10%;
+    position: fixed;
+    width: 50%;
+    height: auto;
+    z-index: 100;
+    border-radius: 15px;
+    border-color: #b3c430;
+    color: #4c5630;
+    border-style: solid; 
+    border-width: 5px;
+    text-align: center;
+    background-color: white;
+}
+
+#box-alert img {
+    width: 15%;
+    height: auto;
+    display: none;
+}
+
+/* #box-alert-buttons {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    margin-top: 15px;
+} */
